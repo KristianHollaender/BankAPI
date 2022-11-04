@@ -1,0 +1,42 @@
+<div style="margin: 100px">
+
+  <mat-form-field>
+    <mat-label>Account name</mat-label>
+    <input matInput [(ngModel)]="accountName">
+  </mat-form-field>
+  <br>
+
+
+  <mat-form-field>
+    <mat-label>Amount</mat-label>
+    <input matInput [(ngModel)]="amount">
+  </mat-form-field>
+  <br>
+
+  <h4>Select customer to account</h4>
+  <mat-form-field appearance="fill">
+    <mat-label>Select customer</mat-label>
+    <mat-select [(ngModel)]="chosenValue">
+      <mat-option *ngFor="let c of customers" [value]="c"> {{c.firstName}} {{c.lastName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+
+  <button [disabled]="accountName == '' || amount == null || chosenValue == null" mat-raised-button (click)="createAccount()">Create Account</button>
+  <br>
+
+  <br>
+  <button mat-raised-button routerLink="/customers">Go to customers page</button>
+
+  <mat-card style="margin-top: 30px;" *ngFor="let a of accounts">
+    <mat-card-title>Account id: {{a.id}}</mat-card-title>
+    <mat-card-subtitle>Account name: {{a.accountName}}</mat-card-subtitle>
+    <mat-card-subtitle>Amount: {{a.amount}}</mat-card-subtitle>
+    <mat-card-subtitle>CustomerID: {{a.customerId}}</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button (click)="deleteAccount(a.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

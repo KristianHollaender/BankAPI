@@ -1,0 +1,25 @@
+<div class="center">
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Email</mat-label>
+  <input [(ngModel)]="email" matInput>
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Password</mat-label>
+  <input [(ngModel)]="password" matInput type="password">
+</mat-form-field>
+<br>
+
+<h4>Role</h4>
+<mat-form-field appearance="fill">
+  <mat-label>Select Role</mat-label>
+  <mat-select [(ngModel)]="chosenValue">
+    <mat-option *ngFor="let role of roles" [value]="role"> {{role}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+
+<button [disabled]="email == '' || password == '' || chosenValue == null" mat-raised-button (click)="register()">Register</button>
+</div>
